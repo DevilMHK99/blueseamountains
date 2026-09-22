@@ -21,7 +21,7 @@ jobs:
         env:
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
         run: |
-          mkdir -p /tmp/deploy && cp index.html /tmp/deploy/
+          mkdir -p /tmp/deploy && cp surge-page/index.html /tmp/deploy/
           npx --yes surge /tmp/deploy blueseamountains.surge.sh --token "$SURGE_TOKEN"
           sleep 8
           code2=$(curl -s -o /dev/null -w "%{http_code}" -A "Mozilla/5.0 (bluesea-keepalive)" --max-time 30 https://blueseamountains.surge.sh || echo 000)
